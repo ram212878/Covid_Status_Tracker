@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.TypedArrayUtils;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rambabu.rest.covidtracker.R;
@@ -21,7 +22,7 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.TimeLi
     public Context context;
     private List<TimeLine> timeLines;
     public TimeLineAdapter(Context context, List<TimeLine> timeLines) {
-        Log.i("Under TimeLine Adapter","DONE");
+//        Log.i("Under TimeLine Adapter","DONE");
         this.context = context;
         this.timeLines = timeLines;
 //        Log.i("Under TimeLine Adapter",timeLines.get(1).toString());
@@ -41,6 +42,8 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.TimeLi
         String date = data.getLast_update();
         String time = date.substring(date.indexOf('T')+1);
         date = date.substring(0,date.indexOf('T'));
+        String[] revDate = date.split("-");
+        date = revDate[2]+"-"+revDate[1]+"-"+revDate[0];
 
         holder.lastUpdated.setText(String.format(" : %s %s", date, time));
         holder.cases.setText(data.getCases());

@@ -63,7 +63,7 @@
                 android:padding="3dp"
                 android:text="@string/cases"
                 android:textAlignment="center"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/timeLineDeathsLabel"
@@ -73,7 +73,7 @@
                 android:padding="3dp"
                 android:text="@string/deaths"
                 android:textAlignment="center"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/timeLineRecoveredLabel"
@@ -83,7 +83,7 @@
                 android:padding="3dp"
                 android:text="@string/recovered"
                 android:textAlignment="center"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/timeLineIncreasedByLabel"
