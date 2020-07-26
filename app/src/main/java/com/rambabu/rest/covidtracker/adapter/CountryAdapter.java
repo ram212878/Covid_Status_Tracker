@@ -39,8 +39,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.MyViewHo
     @Override
     public CountryAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view=LayoutInflater.from(context).inflate(R.layout.country_name_single_row_layout,parent,false);
-        MyViewHolder holder = new MyViewHolder(view);
-        return holder;
+        return new MyViewHolder(view);
     }
 
     @SuppressLint("SetTextI18n")
@@ -65,16 +64,13 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.MyViewHo
         holder.mview.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Toast.makeText(context,country.getCountry()+" is Long clicked",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,country.getCountry(),Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
         if(position==searchCountriesList.size()-1){
             Toast.makeText(context,"Bottom Reached",Toast.LENGTH_SHORT).show();
         }
-        if(position == 0)
-            Toast.makeText(context,"Top Reached",Toast.LENGTH_SHORT).show();
-
     }
 
     @Override
@@ -105,7 +101,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.MyViewHo
             List<Countries> filteredCountries = new ArrayList<>();
 //            Log.e("Hello1",searchCountriesList.get(1).toString());
             if (constraint == null || constraint.length() == 0) {
-                Log.e("under Filter",constraint.toString());
+//                Log.e("under Filter",constraint.toString());
                 filteredCountries.addAll(searchCountriesList);
             } else {
                 String searchQuery = constraint.toString().toLowerCase().trim();

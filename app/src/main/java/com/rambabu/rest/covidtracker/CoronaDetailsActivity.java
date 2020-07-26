@@ -10,6 +10,8 @@ import android.view.WindowManager;
 import com.rambabu.rest.covidtracker.fragments.IndividualCountryData;
 import com.rambabu.rest.covidtracker.helper.Countries;
 
+import java.util.Objects;
+
 public class CoronaDetailsActivity extends AppCompatActivity {
 
     @Override

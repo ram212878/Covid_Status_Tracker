@@ -27,4 +27,5 @@
     <string name="loading_data">Loading Data</string>
     <string name="please_wait">Please Wait</string>
     <string name="hide_timeline">HIDE TIMELINE</string>
+    <string name="please_check_your_net">Please Check your Internet Connectivity</string>
 </resources>

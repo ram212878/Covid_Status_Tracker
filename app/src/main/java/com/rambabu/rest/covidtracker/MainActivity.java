@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.rambabu.rest.covidtracker.adapter.CountryAdapter;
 import com.rambabu.rest.covidtracker.fragments.AboutFragment;
@@ -86,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
     //    This method wil be used to load the data from the internet
     public void loadData() {
+        checkNet();
         if(list.size()<=0){
             progressBar.setVisibility(View.VISIBLE);
             loadingLabel.setVisibility(View.VISIBLE);
@@ -138,6 +141,28 @@ public class MainActivity extends AppCompatActivity {
         });
         queue.add(request);
 
+    }
+
+    private void checkNet() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //Creating a snackbar object
+                if(list.size()<=0) {
+
+                    //Initializing snackbar using Snacbar.make() method
+                    Snackbar snackbar = Snackbar.make(recyclerView, R.string.please_check_your_net, Snackbar.LENGTH_INDEFINITE)
+                            .setAction(R.string.refresh, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            progressBar.setIndeterminate(false);
+                            loadData();
+                        }
+                    });
+                    snackbar.show();
+                }
+            }
+        },5000);
     }
 
     private void stopProgressBar() {
