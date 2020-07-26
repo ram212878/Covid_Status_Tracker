@@ -1,20 +1,17 @@
 package com.rambabu.rest.covidtracker.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.res.TypedArrayUtils;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rambabu.rest.covidtracker.R;
 import com.rambabu.rest.covidtracker.helper.FormatDateAndTime;
+import com.rambabu.rest.covidtracker.helper.FormatNumber;
 import com.rambabu.rest.covidtracker.helper.timelinehelper.TimeLine;
 
 import java.util.List;
@@ -39,19 +36,19 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.TimeLi
     @Override
     public void onBindViewHolder(@NonNull TimeLineViewHolder holder, int position) {
         final TimeLine data = timeLines.get(position);
-
+        FormatNumber fn = new FormatNumber();
         FormatDateAndTime dt = new FormatDateAndTime(data.getLast_update());
 
         holder.lastUpdated.setText(String.format(" : %s %s", dt.getDate(), dt.getTime()));
-        holder.cases.setText(data.getCases());
-        holder.deaths.setText(data.getDeaths());
-        holder.recovered.setText(data.getRecovered());
+        holder.cases.setText(fn.getFormatedNumber(data.getCases()));
+        holder.deaths.setText(fn.getFormatedNumber(data.getDeaths()));
+        holder.recovered.setText(fn.getFormatedNumber(data.getRecovered()));
         if(position==getItemCount()-1) {
-            holder.incresedBy.setText(timeLines.get(position).getCases());
+            holder.incresedBy.setText(fn.getFormatedNumber(timeLines.get(position).getCases()));
         }
         else{
             Integer difference = Integer.parseInt(data.getCases()) - Integer.parseInt(timeLines.get(position + 1).getCases());
-            holder.incresedBy.setText(String.valueOf(difference));
+            holder.incresedBy.setText(fn.getFormatedNumber(String.valueOf(difference)));
         }
     }
 

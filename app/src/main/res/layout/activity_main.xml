@@ -236,7 +236,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="232dp"
-            android:text="@string/loading_please_wait"
+            android:text="@string/please_wait"
             android:textAlignment="textStart"
             android:textAllCaps="true"
             android:textColor="#FFEB3B"

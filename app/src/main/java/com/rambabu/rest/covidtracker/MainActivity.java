@@ -29,6 +29,7 @@ import com.rambabu.rest.covidtracker.adapter.CountryAdapter;
 import com.rambabu.rest.covidtracker.fragments.AboutFragment;
 import com.rambabu.rest.covidtracker.helper.CoronaDetail;
 import com.rambabu.rest.covidtracker.helper.Countries;
+import com.rambabu.rest.covidtracker.helper.FormatNumber;
 import com.rambabu.rest.covidtracker.helper.Global;
 
 import org.json.JSONObject;
@@ -150,10 +151,11 @@ public class MainActivity extends AppCompatActivity {
     private void setGlobalData(CoronaDetail detail) {
         Global globalData;
         globalData = detail.getGlobal();
-        globalTotalCase.setText(globalData.getTotalConfirmed());
-        globalTotalRecovered.setText(globalData.getTotalRecovered());
-        globalTotalDeaths.setText(globalData.getTotalDeaths());
-        globalNewDeaths.setText(globalData.getNewDeaths());
+        FormatNumber fn = new FormatNumber();
+        globalTotalCase.setText(fn.getFormatedNumber(globalData.getTotalConfirmed()));
+        globalTotalRecovered.setText(fn.getFormatedNumber(globalData.getTotalRecovered()));
+        globalTotalDeaths.setText(fn.getFormatedNumber(globalData.getTotalDeaths()));
+        globalNewDeaths.setText(fn.getFormatedNumber(globalData.getNewDeaths()));
     }
 
     @SuppressLint("LongLogTag")

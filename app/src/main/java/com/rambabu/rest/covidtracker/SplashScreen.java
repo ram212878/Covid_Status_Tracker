@@ -12,6 +12,8 @@ import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.rambabu.rest.covidtracker.helper.FormatNumber;
+
 public class SplashScreen extends AppCompatActivity {
     private static final long SPLASH_SCREEN_TIMEOUT = 4000;
     // creating variables for the animation

@@ -121,7 +121,7 @@ public class IndividualCountryData extends Fragment {
             code = c.getCountryCode();
             setData(c,view);
         }
-        Button btn = view.findViewById(R.id.timeLineButton);
+        final Button btn = view.findViewById(R.id.timeLineButton);
 
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         timeLines = new ArrayList<>();
@@ -130,7 +130,10 @@ public class IndividualCountryData extends Fragment {
             public void onClick(View v) {
 //                System.out.println(code);
 //                Toast.makeText(getContext(), R.string.coming_soon, Toast.LENGTH_SHORT).show();
+                if(btn.getText().toString().equalsIgnoreCase("see timeline"))
                 showTimeLine(code);
+                else
+                    recyclerView.setVisibility(View.GONE);
             }
         });
         c=null;
