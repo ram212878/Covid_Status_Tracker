@@ -25,4 +25,5 @@
     <string name="increased_by">Increased By</string>
     <string name="date_and_time">Date and Time</string>
     <string name="app_logo">App Logo</string>
+    <string name="loading_please_wait">Loading.. Please Wait...</string>
 </resources>

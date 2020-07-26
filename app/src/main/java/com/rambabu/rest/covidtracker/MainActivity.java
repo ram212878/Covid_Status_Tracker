@@ -1,13 +1,17 @@
 package com.rambabu.rest.covidtracker;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -37,18 +41,20 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private final static String TAG = "MainActivity";
-    public TextView globalTotalCase,globalTotalDeaths,globalTotalRecovered,globalNewDeaths;
+    public TextView globalTotalCase,globalTotalDeaths,globalTotalRecovered,globalNewDeaths,loadingLabel;
     public List<Countries> list;
     public RecyclerView recyclerView;
     private CoronaDetail detail= new CoronaDetail();
     private CountryAdapter countryAdapter;
+    private Handler handler = new Handler();
+    ProgressBar progressBar ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(TAG,"on create");
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-
 
         init();
         loadData();
@@ -60,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void init() {
 //Instantiating the text view of global data to update the records
+        progressBar = findViewById(R.id.loadingProgressBarMain);
+        loadingLabel = findViewById(R.id.loadingLabel);
+
         globalTotalCase = findViewById(R.id.globalTotalCases);
         globalTotalDeaths = findViewById(R.id.globalTotalDeaths);
         globalTotalRecovered = findViewById(R.id.globalTotalRecovered);
@@ -69,11 +78,41 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager);
+
+        progressBar.setVisibility(View.VISIBLE);
+        loadingLabel.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.GONE);
     }
 
 
     //    This method wil be used to load the data from the internet
     public void loadData() {
+        list.clear();
+        if(list.size()<=0){
+            progressBar.setVisibility(View.VISIBLE);
+            loadingLabel.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
+        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true){
+                    if(list.size()!=0){
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressBar.setVisibility(View.GONE);
+                            loadingLabel.setVisibility(View.GONE);
+                            recyclerView.setVisibility(View.VISIBLE);
+                            }
+                        });
+                        break;
+                    }
+                }
+            }
+        }).start();
+
+
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="https://api.covid19api.com/summary";
         Log.i(TAG,"RequestQueue Initiated");
@@ -85,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
 
                 detail = json.fromJson(response.toString(),CoronaDetail.class);
 //                Log.i(TAG, detail.toString());
-                list.clear();
                 list.addAll(Arrays.asList(detail.getCountries()));
                 countryAdapter.searchCountriesList.clear();
                 countryAdapter.searchCountriesList.addAll(list);
@@ -102,6 +140,12 @@ public class MainActivity extends AppCompatActivity {
         });
         queue.add(request);
 
+    }
+
+    private void stopProgressBar() {
+        progressBar.setVisibility(View.GONE);
+        loadingLabel.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
     }
 
 
@@ -182,4 +226,34 @@ public class MainActivity extends AppCompatActivity {
         frameLayout.getLayoutParams().width = FrameLayout.LayoutParams.WRAP_CONTENT;
     }
 
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(TAG,"on paused");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG,"on Resume");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i(TAG,"on Restart");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(TAG,"on Stop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG,"on Destroy");
+    }
 }

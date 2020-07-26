@@ -2,11 +2,13 @@ package com.rambabu.rest.covidtracker.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +55,9 @@ public class IndividualCountryData extends Fragment {
     private RecyclerView recyclerView;
     private String code;
     public List<TimeLine> timeLines;
+    private ProgressBar fragmentProgressBar;
+    private TextView fragmentLoadingLabel;
+    private Handler handler = new Handler();
     TimeLineAdapter  timeLineAdapter;
     RequestQueue queue;
     public static final String QUEUE_TAG = "QUEUE";
@@ -100,6 +105,9 @@ public class IndividualCountryData extends Fragment {
         Countries c;
         Bundle bundle = getArguments();
 
+        fragmentLoadingLabel = view.findViewById(R.id.fragmentLoadingLabel);
+        fragmentProgressBar = view.findViewById(R.id.fragmentProgressBar);
+
         // finding the Recycler view
         recyclerView = view.findViewById(R.id.timeLineRecyclerView);
 
@@ -120,7 +128,7 @@ public class IndividualCountryData extends Fragment {
             @Override
             public void onClick(View v) {
 //                System.out.println(code);
-                Toast.makeText(getContext(), R.string.coming_soon, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), R.string.coming_soon, Toast.LENGTH_SHORT).show();
                 showTimeLine(code);
             }
         });
@@ -129,7 +137,30 @@ public class IndividualCountryData extends Fragment {
     }
 
     private void showTimeLine(String countryCode) {
-        System.out.println(countryCode);
+        timeLines.clear();
+        if(timeLines.size()<=0){
+            fragmentProgressBar.setVisibility(View.VISIBLE);
+            fragmentLoadingLabel.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
+        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true){
+                    if(timeLines.size()!=0){
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                fragmentLoadingLabel.setVisibility(View.GONE);
+                                fragmentProgressBar.setVisibility(View.GONE);
+                                recyclerView.setVisibility(View.VISIBLE);
+                            }
+                        });
+                        break;
+                    }
+                }
+            }
+        }).start();
         queue = Volley.newRequestQueue(Objects.requireNonNull(getContext()));
         String url = String.format("https://covid19-api.org/api/timeline/%s", countryCode);
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {

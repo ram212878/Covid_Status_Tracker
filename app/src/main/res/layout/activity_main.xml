@@ -182,35 +182,82 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="2dp"
         android:background="#E91E63" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_gravity="center_vertical"
-        android:layout_margin="5dp"
-        android:background="@android:color/holo_red_light"
-        android:foregroundGravity="center|fill_vertical|center_horizontal"
-        android:text="@string/countries"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="@color/cardview_light_background"
-        android:textColorHighlight="@color/colorPrimary"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        tools:ignore="RtlCompat" />
 
-    <View
-        android:id="@+id/mainActivityDivider2"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutMain"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="2dp"
-        android:background="#E91E63" />
+        android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/holo_red_light"
+            android:foregroundGravity="center|fill_vertical|center_horizontal"
+            android:text="@string/countries"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/cardview_light_background"
+            android:textColorHighlight="@color/colorPrimary"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="RtlCompat" />
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <View
+            android:id="@+id/mainActivityDivider2"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#E91E63"
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+        <ProgressBar
+            android:id="@+id/loadingProgressBarMain"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:indeterminateTint="#00BCD4"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/loadingLabel"
+            app:layout_constraintEnd_toEndOf="@+id/recyclerView"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="@+id/recyclerView"
+            app:layout_constraintTop_toBottomOf="@+id/mainActivityDivider2"
+            app:layout_constraintVertical_bias="0.897" />
+
+        <TextView
+            android:id="@+id/loadingLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="232dp"
+            android:text="@string/loading_please_wait"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textColor="#FFEB3B"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
