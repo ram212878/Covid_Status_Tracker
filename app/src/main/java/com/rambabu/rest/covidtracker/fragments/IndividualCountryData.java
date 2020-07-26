@@ -29,6 +29,7 @@ import com.google.gson.reflect.TypeToken;
 import com.rambabu.rest.covidtracker.R;
 import com.rambabu.rest.covidtracker.adapter.TimeLineAdapter;
 import com.rambabu.rest.covidtracker.helper.Countries;
+import com.rambabu.rest.covidtracker.helper.FormatDateAndTime;
 import com.rambabu.rest.covidtracker.helper.timelinehelper.TimeLine;
 
 import org.json.JSONArray;
@@ -200,6 +201,10 @@ public class IndividualCountryData extends Fragment {
         newDeaths =view.findViewById(R.id.fragmentNewDeaths);
         lastUpdated = view.findViewById(R.id.fragmentLastUpdated);
 
+
+        // Creating the instance of FormatDateAndTime class. it return the formated date and time
+        FormatDateAndTime dt = new FormatDateAndTime(c.getDate());
+
         countryName.setText(c.getCountry());
         totalCases.setText(c.getTotalConfirmed());
         totalRecovered.setText(c.getTotalRecovered());
@@ -207,7 +212,7 @@ public class IndividualCountryData extends Fragment {
         newCases.setText(c.getNewConfirmed());
         newRecovered.setText(c.getNewRecovered());
         newDeaths.setText(c.getNewDeaths());
-        lastUpdated.setText(c.getDate());
+        lastUpdated.setText(dt.getDate()+" "+dt.getTime());
     }
 
     @Override

@@ -14,6 +14,7 @@ import androidx.core.content.res.TypedArrayUtils;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rambabu.rest.covidtracker.R;
+import com.rambabu.rest.covidtracker.helper.FormatDateAndTime;
 import com.rambabu.rest.covidtracker.helper.timelinehelper.TimeLine;
 
 import java.util.List;
@@ -32,20 +33,16 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.TimeLi
     @Override
     public TimeLineViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(context).inflate(R.layout.time_line_holder,parent,false);
-        TimeLineViewHolder timeLineViewHolder = new TimeLineViewHolder(view);
-        return timeLineViewHolder;
+        return new TimeLineViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull TimeLineViewHolder holder, int position) {
         final TimeLine data = timeLines.get(position);
-        String date = data.getLast_update();
-        String time = date.substring(date.indexOf('T')+1);
-        date = date.substring(0,date.indexOf('T'));
-        String[] revDate = date.split("-");
-        date = revDate[2]+"-"+revDate[1]+"-"+revDate[0];
 
-        holder.lastUpdated.setText(String.format(" : %s %s", date, time));
+        FormatDateAndTime dt = new FormatDateAndTime(data.getLast_update());
+
+        holder.lastUpdated.setText(String.format(" : %s %s", dt.getDate(), dt.getTime()));
         holder.cases.setText(data.getCases());
         holder.deaths.setText(data.getDeaths());
         holder.recovered.setText(data.getRecovered());

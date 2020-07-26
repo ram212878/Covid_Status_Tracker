@@ -1,8 +1,6 @@
 package com.rambabu.rest.covidtracker;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -87,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
 
     //    This method wil be used to load the data from the internet
     public void loadData() {
-        list.clear();
         if(list.size()<=0){
             progressBar.setVisibility(View.VISIBLE);
             loadingLabel.setVisibility(View.VISIBLE);
