@@ -1,5 +1,6 @@
 package com.rambabu.rest.covidtracker.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -30,6 +30,7 @@ import com.rambabu.rest.covidtracker.R;
 import com.rambabu.rest.covidtracker.adapter.TimeLineAdapter;
 import com.rambabu.rest.covidtracker.helper.Countries;
 import com.rambabu.rest.covidtracker.helper.FormatDateAndTime;
+import com.rambabu.rest.covidtracker.helper.FormatNumber;
 import com.rambabu.rest.covidtracker.helper.timelinehelper.TimeLine;
 
 import org.json.JSONArray;
@@ -59,6 +60,7 @@ public class IndividualCountryData extends Fragment {
     private ProgressBar fragmentProgressBar;
     private TextView fragmentLoadingLabel;
     private Handler handler = new Handler();
+    private Button btn;
     TimeLineAdapter  timeLineAdapter;
     RequestQueue queue;
     public static final String QUEUE_TAG = "QUEUE";
@@ -121,27 +123,26 @@ public class IndividualCountryData extends Fragment {
             code = c.getCountryCode();
             setData(c,view);
         }
-        final Button btn = view.findViewById(R.id.timeLineButton);
+        btn = view.findViewById(R.id.timeLineButton);
 
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         timeLines = new ArrayList<>();
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                System.out.println(code);
-//                Toast.makeText(getContext(), R.string.coming_soon, Toast.LENGTH_SHORT).show();
                 if(btn.getText().toString().equalsIgnoreCase("see timeline"))
                 showTimeLine(code);
-                else
+                else {
+                    btn.setText(R.string.see_timeline);
                     recyclerView.setVisibility(View.GONE);
+                }
             }
         });
-        c=null;
         return view;
     }
 
     private void showTimeLine(String countryCode) {
-        timeLines.clear();
         if(timeLines.size()<=0){
             fragmentProgressBar.setVisibility(View.VISIBLE);
             fragmentLoadingLabel.setVisibility(View.VISIBLE);
@@ -157,6 +158,7 @@ public class IndividualCountryData extends Fragment {
                             public void run() {
                                 fragmentLoadingLabel.setVisibility(View.GONE);
                                 fragmentProgressBar.setVisibility(View.GONE);
+                                btn.setText(R.string.hide_timeline);
                                 recyclerView.setVisibility(View.VISIBLE);
                             }
                         });
@@ -192,7 +194,8 @@ public class IndividualCountryData extends Fragment {
 
 //This method is used to get the views on then fragment and set the value in the respective views
 
-        private void setData(Countries c,View view) {
+        @SuppressLint("SetTextI18n")
+        private void setData(Countries c, View view) {
 //        Log.i("setData",c.toString());
         TextView countryName,totalCases,totalDeaths,totalRecovered,newCases,newRecovered,newDeaths,lastUpdated;
         countryName = view.findViewById(R.id.fragmentCountryName);
@@ -208,14 +211,16 @@ public class IndividualCountryData extends Fragment {
         // Creating the instance of FormatDateAndTime class. it return the formated date and time
         FormatDateAndTime dt = new FormatDateAndTime(c.getDate());
 
+            FormatNumber fn = new FormatNumber();
+
         countryName.setText(c.getCountry());
-        totalCases.setText(c.getTotalConfirmed());
-        totalRecovered.setText(c.getTotalRecovered());
-        totalDeaths.setText(c.getTotalDeaths());
-        newCases.setText(c.getNewConfirmed());
-        newRecovered.setText(c.getNewRecovered());
-        newDeaths.setText(c.getNewDeaths());
-        lastUpdated.setText(dt.getDate()+" "+dt.getTime());
+        totalCases.setText(fn.getFormattedNumber(c.getTotalConfirmed()));
+        totalRecovered.setText(fn.getFormattedNumber(c.getTotalRecovered()));
+        totalDeaths.setText(fn.getFormattedNumber(c.getTotalDeaths()));
+        newCases.setText(fn.getFormattedNumber(c.getNewConfirmed()));
+        newRecovered.setText(fn.getFormattedNumber(c.getNewRecovered()));
+        newDeaths.setText(fn.getFormattedNumber(c.getNewDeaths()));
+        lastUpdated.setText(dt.getDate()+"\n"+dt.getTime());
     }
 
     @Override

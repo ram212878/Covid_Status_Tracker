@@ -11,13 +11,15 @@
     android:layout_marginRight="10dp"
     app:cardCornerRadius="20dp"
     app:cardElevation="10dp">
+
     <TextView
         android:id="@+id/textViewCountryName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="2dp"
         android:layout_gravity="center"
+        android:padding="2dp"
         android:textAllCaps="true"
+        android:textColor="@color/textLabelColor"
         android:textSize="18sp"
         android:textStyle="bold" />
 

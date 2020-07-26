@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -39,6 +38,7 @@
                     android:text="@string/fetching_data"
                     android:textAlignment="center"
                     android:textAllCaps="true"
+                    android:textColor="@android:color/holo_red_light"
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
@@ -53,6 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:baselineAligned="false"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -69,6 +70,7 @@
                             android:padding="3dp"
                             android:text="@string/total_cases"
                             android:textAlignment="viewStart"
+                            android:textColor="@color/textLabelColor"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -80,6 +82,7 @@
                             android:padding="3dp"
                             android:text="@string/total_recovered"
                             android:textAlignment="viewStart"
+                            android:textColor="@color/textLabelColor"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -91,6 +94,7 @@
                             android:padding="3dp"
                             android:text="@string/total_deaths"
                             android:textAlignment="viewStart"
+                            android:textColor="@color/textLabelColor"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -102,6 +106,7 @@
                             android:padding="3dp"
                             android:text="@string/new_cases"
                             android:textAlignment="viewStart"
+                            android:textColor="@color/textLabelColor"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -113,6 +118,7 @@
                             android:padding="3dp"
                             android:text="@string/new_deaths"
                             android:textAlignment="viewStart"
+                            android:textColor="@color/textLabelColor"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -124,6 +130,7 @@
                             android:padding="3dp"
                             android:text="@string/new_recovered"
                             android:textAlignment="viewStart"
+                            android:textColor="@color/textLabelColor"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -135,6 +142,7 @@
                             android:padding="3dp"
                             android:text="@string/last_updated"
                             android:textAlignment="viewStart"
+                            android:textColor="@color/textLabelColor"
                             android:textSize="16sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -151,7 +159,9 @@
                             android:layout_height="wrap_content"
                             android:padding="3dp"
                             android:text="@string/fetching_data"
-                            android:textSize="16sp" />
+                            android:textColor="@color/textColor"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/fragmentTotalRecovered"
@@ -159,7 +169,9 @@
                             android:layout_height="wrap_content"
                             android:padding="3dp"
                             android:text="@string/fetching_data"
-                            android:textSize="16sp" />
+                            android:textColor="@color/textColor"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/fragmentTotalDeaths"
@@ -167,7 +179,9 @@
                             android:layout_height="wrap_content"
                             android:padding="3dp"
                             android:text="@string/fetching_data"
-                            android:textSize="16sp" />
+                            android:textColor="@color/textColor"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/fragmentNewCases"
@@ -175,7 +189,9 @@
                             android:layout_height="wrap_content"
                             android:padding="3dp"
                             android:text="@string/fetching_data"
-                            android:textSize="16sp" />
+                            android:textColor="@color/textColor"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/fragmentNewDeaths"
@@ -183,7 +199,9 @@
                             android:layout_height="wrap_content"
                             android:padding="3dp"
                             android:text="@string/fetching_data"
-                            android:textSize="16sp" />
+                            android:textColor="@color/textColor"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/fragmentNewRecovered"
@@ -191,7 +209,9 @@
                             android:layout_height="wrap_content"
                             android:padding="3dp"
                             android:text="@string/fetching_data"
-                            android:textSize="16sp" />
+                            android:textColor="@color/textColor"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/fragmentLastUpdated"
@@ -199,7 +219,9 @@
                             android:layout_height="wrap_content"
                             android:padding="3dp"
                             android:text="@string/fetching_data"
-                            android:textSize="16sp" />
+                            android:textColor="@color/textColor"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
                 </LinearLayout>

@@ -26,4 +26,5 @@
     <string name="app_logo">App Logo</string>
     <string name="loading_data">Loading Data</string>
     <string name="please_wait">Please Wait</string>
+    <string name="hide_timeline">HIDE TIMELINE</string>
 </resources>

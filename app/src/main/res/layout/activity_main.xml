@@ -10,6 +10,7 @@
     android:orientation="vertical"
     android:textAlignment="center"
     tools:context=".MainActivity">
+
     <FrameLayout
         android:id="@+id/about_fragment_container"
         android:layout_width="wrap_content"
@@ -43,7 +44,7 @@
                 android:paddingBottom="5dp"
                 android:text="@string/global_covid_cases"
                 android:textAlignment="center"
-                android:textColor="#E91E63"
+                android:textColor="@android:color/holo_red_light"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -58,7 +59,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:baselineAligned="false">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -76,6 +78,7 @@
                         android:paddingTop="5dp"
                         android:paddingRight="5dp"
                         android:text="@string/total_cases"
+                        android:textColor="@color/textLabelColor"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -88,6 +91,7 @@
                         android:paddingTop="5dp"
                         android:paddingRight="5dp"
                         android:text="@string/total_deaths"
+                        android:textColor="@color/textLabelColor"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -100,6 +104,7 @@
                         android:paddingTop="5dp"
                         android:paddingRight="5dp"
                         android:text="@string/total_recovered"
+                        android:textColor="@color/textLabelColor"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -112,6 +117,7 @@
                         android:paddingTop="5dp"
                         android:paddingRight="5dp"
                         android:text="@string/new_deaths"
+                        android:textColor="@color/textLabelColor"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -132,6 +138,7 @@
                         android:paddingTop="5dp"
                         android:paddingRight="5dp"
                         android:text="@string/fetching_data"
+                        android:textColor="@color/textColor"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -144,6 +151,7 @@
                         android:paddingTop="5dp"
                         android:paddingRight="5dp"
                         android:text="@string/fetching_data"
+                        android:textColor="@color/textColor"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -156,6 +164,7 @@
                         android:paddingTop="5dp"
                         android:paddingRight="5dp"
                         android:text="@string/fetching_data"
+                        android:textColor="@color/textColor"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -168,6 +177,7 @@
                         android:paddingTop="5dp"
                         android:paddingRight="5dp"
                         android:text="@string/fetching_data"
+                        android:textColor="@color/textColor"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -175,67 +185,55 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <View
-        android:id="@+id/mainActivityDivider"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="2dp"
-        android:background="#E91E63" />
+        android:background="@color/colorPrimaryDark"
+        android:padding="4dp"
+        android:text="@string/countries"
+        android:textAlignment="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayoutMain"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toStartOf="@+id/loadingProgressBarMain"
+        app:layout_constraintStart_toStartOf="@+id/loadingProgressBarMain">
 
-        <TextView
-            android:id="@+id/textView11"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginBottom="8dp"
-            android:background="@android:color/holo_red_light"
-            android:foregroundGravity="center|fill_vertical|center_horizontal"
-            android:text="@string/countries"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="@color/cardview_light_background"
-            android:textColorHighlight="@color/colorPrimary"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="RtlCompat" />
+            android:layout_height="match_parent"
+            android:visibility="gone">
 
-        <View
-            android:id="@+id/mainActivityDivider2"
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_marginTop="5dp"
-            android:background="#E91E63"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        </androidx.recyclerview.widget.RecyclerView>
 
         <ProgressBar
             android:id="@+id/loadingProgressBarMain"
             style="?android:attr/progressBarStyle"
-            android:layout_width="100dp"
-            android:layout_height="70dp"
+            android:layout_width="51dp"
+            android:layout_height="57dp"
             android:indeterminateTint="#00BCD4"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/loadingLabel"
-            app:layout_constraintEnd_toEndOf="@+id/recyclerView"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="@+id/recyclerView"
-            app:layout_constraintTop_toBottomOf="@+id/mainActivityDivider2"
-            app:layout_constraintVertical_bias="0.897" />
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.162" />
 
         <TextView
             android:id="@+id/loadingLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="232dp"
             android:text="@string/please_wait"
             android:textAlignment="textStart"
             android:textAllCaps="true"
@@ -245,19 +243,10 @@
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loadingProgressBarMain"
+            app:layout_constraintVertical_bias="0.060000002" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
-            android:visibility="gone"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="0dp">
-
-        </androidx.recyclerview.widget.RecyclerView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
