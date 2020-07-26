@@ -40,15 +40,15 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.TimeLi
         FormatDateAndTime dt = new FormatDateAndTime(data.getLast_update());
 
         holder.lastUpdated.setText(String.format(" : %s %s", dt.getDate(), dt.getTime()));
-        holder.cases.setText(fn.getFormatedNumber(data.getCases()));
-        holder.deaths.setText(fn.getFormatedNumber(data.getDeaths()));
-        holder.recovered.setText(fn.getFormatedNumber(data.getRecovered()));
+        holder.cases.setText(fn.getFormattedNumber(data.getCases()));
+        holder.deaths.setText(fn.getFormattedNumber(data.getDeaths()));
+        holder.recovered.setText(fn.getFormattedNumber(data.getRecovered()));
         if(position==getItemCount()-1) {
-            holder.incresedBy.setText(fn.getFormatedNumber(timeLines.get(position).getCases()));
+            holder.incresedBy.setText(fn.getFormattedNumber(timeLines.get(position).getCases()));
         }
         else{
             Integer difference = Integer.parseInt(data.getCases()) - Integer.parseInt(timeLines.get(position + 1).getCases());
-            holder.incresedBy.setText(fn.getFormatedNumber(String.valueOf(difference)));
+            holder.incresedBy.setText(fn.getFormattedNumber(String.valueOf(difference)));
         }
     }
 

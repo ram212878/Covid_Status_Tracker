@@ -152,10 +152,10 @@ public class MainActivity extends AppCompatActivity {
         Global globalData;
         globalData = detail.getGlobal();
         FormatNumber fn = new FormatNumber();
-        globalTotalCase.setText(fn.getFormatedNumber(globalData.getTotalConfirmed()));
-        globalTotalRecovered.setText(fn.getFormatedNumber(globalData.getTotalRecovered()));
-        globalTotalDeaths.setText(fn.getFormatedNumber(globalData.getTotalDeaths()));
-        globalNewDeaths.setText(fn.getFormatedNumber(globalData.getNewDeaths()));
+        globalTotalCase.setText(fn.getFormattedNumber(globalData.getTotalConfirmed()));
+        globalTotalRecovered.setText(fn.getFormattedNumber(globalData.getTotalRecovered()));
+        globalTotalDeaths.setText(fn.getFormattedNumber(globalData.getTotalDeaths()));
+        globalNewDeaths.setText(fn.getFormattedNumber(globalData.getNewDeaths()));
     }
 
     @SuppressLint("LongLogTag")
