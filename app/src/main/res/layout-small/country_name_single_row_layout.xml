@@ -4,12 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardViewCountryName"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:textAlignment="center"
+    android:layout_height="40dp"
     android:layout_marginLeft="10dp"
     android:layout_marginTop="5dp"
-    android:layout_marginRight="10dp"
-    app:cardCornerRadius="20dp"
+    android:layout_marginRight="5dp"
+    android:textAlignment="center"
+    app:cardCornerRadius="10dp"
     app:cardElevation="10dp">
 
     <TextView
@@ -20,7 +20,7 @@
         android:padding="2dp"
         android:textAllCaps="true"
         android:textColor="@color/textLabelColor"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold" />
 
 </androidx.cardview.widget.CardView>

@@ -26,22 +26,23 @@
                 android:id="@+id/timeLastUpdatedLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="2dp"
+                android:layout_weight="1"
                 android:padding="5dp"
                 android:text="@string/last_updated"
                 android:textColor="@color/textLabelColor"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/timeLineLastUpdatedData"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="2dp"
                 android:layout_weight="1"
                 android:padding="2dp"
                 android:text="@string/fetching_data"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -63,9 +64,8 @@
                 android:layout_weight="1"
                 android:padding="1dp"
                 android:text="@string/cases"
-                android:textAlignment="center"
                 android:textColor="@color/textLabelColor"
-                android:textSize="16sp"
+                android:textSize="10sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -75,9 +75,8 @@
                 android:layout_weight="1"
                 android:padding="1dp"
                 android:text="@string/deaths"
-                android:textAlignment="center"
                 android:textColor="@color/textLabelColor"
-                android:textSize="16sp"
+                android:textSize="10sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -87,9 +86,8 @@
                 android:layout_weight="1"
                 android:padding="1dp"
                 android:text="@string/recovered"
-                android:textAlignment="center"
                 android:textColor="@color/textLabelColor"
-                android:textSize="16sp"
+                android:textSize="10sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -99,9 +97,8 @@
                 android:layout_weight="1"
                 android:padding="1dp"
                 android:text="@string/increased_by"
-                android:textAlignment="center"
                 android:textColor="@color/textLabelColor"
-                android:textSize="16sp"
+                android:textSize="10sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -123,9 +120,8 @@
                 android:layout_weight="1"
                 android:padding="3dp"
                 android:text="@string/fetching_data"
-                android:textAlignment="center"
                 android:textColor="@color/textColor"
-                android:textSize="16sp"
+                android:textSize="10sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -135,9 +131,8 @@
                 android:layout_weight="1"
                 android:padding="3dp"
                 android:text="@string/fetching_data"
-                android:textAlignment="center"
                 android:textColor="@color/textColor"
-                android:textSize="16sp"
+                android:textSize="10sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -147,9 +142,8 @@
                 android:layout_weight="1"
                 android:padding="3dp"
                 android:text="@string/fetching_data"
-                android:textAlignment="center"
                 android:textColor="@color/textColor"
-                android:textSize="16sp"
+                android:textSize="10sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -159,9 +153,8 @@
                 android:layout_weight="1"
                 android:padding="3dp"
                 android:text="@string/fetching_data"
-                android:textAlignment="center"
                 android:textColor="@color/textColor"
-                android:textSize="16sp"
+                android:textSize="10sp"
                 android:textStyle="bold" />
         </LinearLayout>
 

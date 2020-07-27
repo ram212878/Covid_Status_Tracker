@@ -20,15 +20,17 @@
         android:contentDescription="@string/app_logo"
         app:layout_constraintBottom_toTopOf="@+id/splashScreenAppName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.109"
         app:srcCompat="@drawable/logo" />
 
     <ImageView
         android:id="@+id/splashScreenAppName"
         android:layout_width="346dp"
         android:layout_height="91dp"
-        android:layout_marginBottom="232dp"
+        android:layout_marginBottom="264dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,12 +41,13 @@
         android:id="@+id/splashScreenSubHeading"
         android:layout_width="60dp"
         android:layout_height="30dp"
+        android:contentDescription="developer name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.907"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/splashScreenAppName"
-        app:layout_constraintVertical_bias="0.586"
+        app:layout_constraintVertical_bias="0.482"
         app:srcCompat="@drawable/name_text3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
