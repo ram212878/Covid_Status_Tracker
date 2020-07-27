@@ -148,11 +148,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 //Creating a snackbar object
+                Snackbar snackbar = Snackbar.make(recyclerView, R.string.please_check_your_net, Snackbar.LENGTH_INDEFINITE);
                 if(list.size()<=0) {
 
                     //Initializing snackbar using Snacbar.make() method
-                    Snackbar snackbar = Snackbar.make(recyclerView, R.string.please_check_your_net, Snackbar.LENGTH_INDEFINITE)
-                            .setAction(R.string.refresh, new View.OnClickListener() {
+                            snackbar.setAction(R.string.refresh, new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             progressBar.setIndeterminate(false);
@@ -161,6 +161,8 @@ public class MainActivity extends AppCompatActivity {
                     });
                     snackbar.show();
                 }
+                else
+                    snackbar.dismiss();
             }
         },5000);
     }
