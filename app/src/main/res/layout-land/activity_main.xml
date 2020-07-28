@@ -9,6 +9,13 @@
     android:orientation="horizontal"
     android:baselineAligned="false">
 
+    <FrameLayout
+        android:id="@+id/about_fragment_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        tools:visibility="gone" />
+
     <LinearLayout
         android:id="@+id/mainActivitylinearlayout"
         android:layout_width="match_parent"
@@ -19,12 +26,6 @@
         android:textAlignment="center"
         tools:context=".MainActivity">
 
-
-        <FrameLayout
-            android:id="@+id/about_fragment_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/globalCardView"
@@ -194,8 +195,21 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"/>
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:adSize="BANNER"
+            app:adUnitId="ca-app-pub-3940256099942544/6300978111" />
 
     </LinearLayout>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayoutMain"

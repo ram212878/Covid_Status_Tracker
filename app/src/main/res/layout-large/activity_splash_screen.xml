@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/splashScreenLogo"
-        android:layout_width="311dp"
-        android:layout_height="198dp"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="10dp"
@@ -28,20 +28,22 @@
 
     <ImageView
         android:id="@+id/splashScreenAppName"
-        android:layout_width="346dp"
-        android:layout_height="91dp"
-        android:layout_marginBottom="264dp"
+        android:layout_width="400dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginBottom="280dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/splashScreenLogo"
         app:srcCompat="@drawable/text4"
         tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/splashScreenSubHeading"
-        android:layout_width="60dp"
-        android:layout_height="30dp"
-        android:contentDescription="developer name"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="@string/developer_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.907"

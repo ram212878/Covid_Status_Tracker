@@ -23,6 +23,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.rambabu.rest.covidtracker.adapter.CountryAdapter;
@@ -38,6 +43,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
 public class MainActivity extends AppCompatActivity {
     private final static String TAG = "MainActivity";
     public TextView globalTotalCase,globalTotalDeaths,globalTotalRecovered,globalNewDeaths,loadingLabel;
@@ -46,25 +54,57 @@ public class MainActivity extends AppCompatActivity {
     private CoronaDetail detail= new CoronaDetail();
     private CountryAdapter countryAdapter;
     private Handler handler = new Handler();
+    private AdView mAdView;
+    FrameLayout frameLayout;
     ProgressBar progressBar ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(TAG,"on create");
         super.onCreate(savedInstanceState);
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         init();
         loadData();
+        if(checkFragment()){
+            frameLayout.getLayoutParams().height=MATCH_PARENT;
+            frameLayout.getLayoutParams().width = MATCH_PARENT;
+            frameLayout.setVisibility(View.VISIBLE);
+        }
+        else{
+            frameLayout.getLayoutParams().height = WRAP_CONTENT;
+            frameLayout.getLayoutParams().width = WRAP_CONTENT;
+            frameLayout.setVisibility(View.GONE);
+        }
 
 //        Log.i(TAG,"After loaData call");
         countryAdapter = new CountryAdapter(getApplicationContext(),list);
         recyclerView.setAdapter(countryAdapter);
     }
 
+    private boolean checkFragment() {
+        AboutFragment aboutFragment =(AboutFragment) getSupportFragmentManager()
+         .findFragmentById(R.id.about_fragment_container);
+        if(aboutFragment!=null)
+            return true;
+        else
+            return false;
+    }
+
     private void init() {
 //Instantiating the text view of global data to update the records
+        frameLayout = findViewById(R.id.about_fragment_container);
         progressBar = findViewById(R.id.loadingProgressBarMain);
         loadingLabel = findViewById(R.id.loadingLabel);
 
@@ -162,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
                 else
                     snackbar.dismiss();
             }
-        },5000);
+        }, 10000);
     }
 
     private void stopProgressBar() {
@@ -198,14 +238,14 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public boolean onQueryTextChange(String newText) {
-//                Log.i(TAGMENU,"Under ON QUERY TEXT CHANGE METHOD");
+//                Log.i(TAG MENU,"Under ON QUERY TEXT CHANGE METHOD");
                 countryAdapter.getFilter().filter(newText);
                 return false;
             }
         });
         return true;
     }
-// T
+//
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -215,11 +255,12 @@ public class MainActivity extends AppCompatActivity {
 //                setGlobalData(detail);
                 return true;
 
+
             case R.id.aboutIcon:
                 AboutFragment aboutFragment = new AboutFragment();
-                FrameLayout frameLayout = findViewById(R.id.about_fragment_container);
-                frameLayout.getLayoutParams().height = FrameLayout.LayoutParams.MATCH_PARENT;
-                frameLayout.getLayoutParams().width = FrameLayout.LayoutParams.MATCH_PARENT;
+                frameLayout.setVisibility(View.VISIBLE);
+                frameLayout.getLayoutParams().height = MATCH_PARENT;
+                frameLayout.getLayoutParams().width = MATCH_PARENT;
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.about_fragment_container,aboutFragment)
@@ -229,55 +270,24 @@ public class MainActivity extends AppCompatActivity {
             case R.id.exitIcon:
                 finishAffinity();
                 return true;
-
-            default:return super.onOptionsItemSelected(item);
+            default: return super.onOptionsItemSelected(item);
         }
     }
 
     public void closeFragment(View view) {
-        AboutFragment aboutFragment =(AboutFragment) getSupportFragmentManager()
 
+        AboutFragment aboutFragment =(AboutFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.about_fragment_container);
-//        View view1 = findViewById(R.id.mainActivitylinearlayout);
-//        view1.setAlpha(1);
+        View view1 = findViewById(R.id.mainActivitylinearlayout);
+        view1.setAlpha(1);
         if(aboutFragment!=null)
             getSupportFragmentManager()
-            .beginTransaction()
-            .remove(aboutFragment)
-            .commit();
-        FrameLayout frameLayout = findViewById(R.id.about_fragment_container);
-        frameLayout.getLayoutParams().height = FrameLayout.LayoutParams.WRAP_CONTENT;
-        frameLayout.getLayoutParams().width = FrameLayout.LayoutParams.WRAP_CONTENT;
+                    .beginTransaction()
+                    .remove(aboutFragment)
+                    .commit();
+        frameLayout.setVisibility(View.GONE);
+        frameLayout.getLayoutParams().height =MATCH_PARENT;
+        frameLayout.getLayoutParams().width =MATCH_PARENT;
     }
 
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i(TAG,"on paused");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i(TAG,"on Resume");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.i(TAG,"on Restart");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i(TAG,"on Stop");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i(TAG,"on Destroy");
-    }
 }

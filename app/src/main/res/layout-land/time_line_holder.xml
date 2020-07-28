@@ -65,7 +65,7 @@
                 android:text="@string/cases"
                 android:textAlignment="center"
                 android:textColor="@color/textLabelColor"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -77,7 +77,7 @@
                 android:text="@string/deaths"
                 android:textAlignment="center"
                 android:textColor="@color/textLabelColor"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -89,7 +89,7 @@
                 android:text="@string/recovered"
                 android:textAlignment="center"
                 android:textColor="@color/textLabelColor"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -101,7 +101,7 @@
                 android:text="@string/increased_by"
                 android:textAlignment="center"
                 android:textColor="@color/textLabelColor"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -125,7 +125,7 @@
                 android:text="@string/fetching_data"
                 android:textAlignment="center"
                 android:textColor="@color/textColor"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -137,7 +137,7 @@
                 android:text="@string/fetching_data"
                 android:textAlignment="center"
                 android:textColor="@color/textColor"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -149,7 +149,7 @@
                 android:text="@string/fetching_data"
                 android:textAlignment="center"
                 android:textColor="@color/textColor"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -161,7 +161,7 @@
                 android:text="@string/fetching_data"
                 android:textAlignment="center"
                 android:textColor="@color/textColor"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>
 

@@ -1,10 +1,12 @@
 package com.rambabu.rest.covidtracker;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 
 import com.rambabu.rest.covidtracker.fragments.IndividualCountryData;
@@ -13,6 +15,7 @@ import com.rambabu.rest.covidtracker.helper.Countries;
 import java.util.Objects;
 
 public class CoronaDetailsActivity extends AppCompatActivity {
+    public Countries c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +24,11 @@ public class CoronaDetailsActivity extends AppCompatActivity {
 //        getSupportActionBar().hide();
         setContentView(R.layout.activity_corona_details);
         Intent i = getIntent();
-        Countries c = i.getParcelableExtra("data");
+//        if(savedInstanceState!=null)
+//            c = savedInstanceState.getParcelable("COUNTRIES_OBJECT");
+//        else{
+            c = i.getParcelableExtra("data");
+//        }
         if (c != null) {
             IndividualCountryData fragment = new IndividualCountryData(this);
             Bundle bundle = new Bundle();
@@ -45,4 +52,16 @@ public class CoronaDetailsActivity extends AppCompatActivity {
         super.onDestroy();
         Log.i("Fragment","Activity Destroyed");
     }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable("COUNTRIES_OBJECT",c);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
 }

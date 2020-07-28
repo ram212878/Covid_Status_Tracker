@@ -29,4 +29,8 @@
     <string name="hide_timeline">HIDE TIMELINE</string>
     <string name="please_check_your_net">Please Check your Internet Connectivity</string>
     <string name="developer_name">Developer Name</string>
+    <string name="company_mail">rambo.aap.gconsole@gmail.com</string>
+    <string name="dear_users">Dear Users</string>
+    <string name="thank_you">Thank You for Downloading and supporting this app</string>
+    <string name="suggestion">If you have any suggestions/query feel free to contact us on the mail given below</string>
 </resources>
