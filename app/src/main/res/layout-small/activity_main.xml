@@ -13,12 +13,13 @@
             android:orientation="vertical" >
 
             <com.google.android.gms.ads.AdView
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                ads:adUnitId="ca-app-pub-1040530191555724/6890713034"
                 android:id="@+id/adView"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginBottom="5dp"
-                app:adSize="BANNER"
-                app:adUnitId="ca-app-pub-3940256099942544/6300978111" />
+                app:adSize="BANNER"/>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/globalCardView"

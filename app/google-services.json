@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "246646552861",
+    "firebase_url": "https://covid-status-tracker.firebaseio.com",
+    "project_id": "covid-status-tracker",
+    "storage_bucket": "covid-status-tracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246646552861:android:9ab9790fb26c1eaf61c9f4",
+        "android_client_info": {
+          "package_name": "com.rambabu.rest.covidtracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "246646552861-r2ck387fbje4p6os2kb038ubltkd1pq2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNFc-RS8qYrGTNdnRQ0LvAoxuEnBVypzQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "246646552861-r2ck387fbje4p6os2kb038ubltkd1pq2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

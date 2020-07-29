@@ -202,11 +202,14 @@
             android:layout_weight="2"/>
 
         <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            ads:adUnitId="ca-app-pub-1040530191555724/6890713034"
             android:id="@+id/adView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:adSize="BANNER"
-            app:adUnitId="ca-app-pub-3940256099942544/6300978111" />
+            app:adSize="BANNER">
+
+        </com.google.android.gms.ads.AdView>
 
     </LinearLayout>
 
