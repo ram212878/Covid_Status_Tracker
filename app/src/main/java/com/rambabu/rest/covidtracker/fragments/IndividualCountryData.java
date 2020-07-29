@@ -24,6 +24,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.rambabu.rest.covidtracker.R;
@@ -63,6 +68,7 @@ public class IndividualCountryData extends Fragment {
     private Button btn;
     TimeLineAdapter  timeLineAdapter;
     RequestQueue queue;
+    private AdView mAdView;
     public static final String QUEUE_TAG = "QUEUE";
     View view;
     public Context context;
@@ -106,6 +112,14 @@ public class IndividualCountryData extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view =  inflater.inflate(R.layout.fragment_individual_country_data, container, false);
+        MobileAds.initialize(view.getContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        mAdView = view.findViewById(R.id.adView6);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         Countries c;
         Bundle bundle = getArguments();
 
