@@ -1,18 +1,15 @@
 package com.rambabu.rest.covidtracker;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.view.WindowManager;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.rambabu.rest.covidtracker.fragments.IndividualCountryData;
 import com.rambabu.rest.covidtracker.helper.Countries;
-
-import java.util.Objects;
 
 public class CoronaDetailsActivity extends AppCompatActivity {
     public Countries c;

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Corona Status Tracker</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="refresh">ताज़ा डेटा</string>
+    <string name="search">खोजे</string>
+    <string name="about">अधिक जानकारी</string>
+    <string name="exit">बंद करे</string>
+    <string name="global_covid_cases">दुनिया भर में कोरोना के मामले</string>
+    <string name="total_cases">कुल मामले</string>
+    <string name="total_deaths">कुल मृत्यु</string>
+    <string name="total_recovered">कुल स्वस्थ</string>
+    <string name="new_deaths">नई मृत्यु</string>
+    <string name="fetching_data">डेटा लाया जा रहा है....</string>
+    <string name="countries">देश</string>
+    <string name="new_cases">नए मामले</string>
+    <string name="new_recovered">नए स्वस्थ</string>
+    <string name="last_updated">अंतिम मामला दर्ज </string>
+    <string name="see_timeline">टाइमलाइन देखें</string>
+    <string name="coming_soon">जल्द आ रहा है </string>
+    <string name="cases">मामले</string>
+    <string name="deaths">मृत्यु</string>
+    <string name="recovered">स्वस्थ</string>
+    <string name="increased">वृद्धि</string>
+    <string name="increased_by">वृद्धि</string>
+    <string name="app_logo">App Logo</string>
+    <string name="loading_data">डेटा लोड हो रहा है</string>
+    <string name="please_wait">कृपया प्रतीक्षा करे</string>
+    <string name="hide_timeline">टाइमलाइन छुपाएं</string>
+    <string name="please_check_your_net">कृपया अपनी इंटरनेट कनेक्टिविटी की जांच करें |</string>
+    <string name="developer_name">डेवलपर का नाम</string>
+    <string name="company_mail">rambo.aap.gconsole@gmail.com</string>
+    <string name="dear_users">प्रिय उपयोगकर्ता</string>
+    <string name="thank_you">इस ऐप को डाउनलोड करने और समर्थन करने के लिए धन्यवाद</string>
+    <string name="suggestion">यदि आपके पास कोई सुझाव/क्वेरी है तो नीचे दिए गए मेल पर हमसे संपर्क करने के लिए स्वतंत्र महसूस करें</string>
+</resources>

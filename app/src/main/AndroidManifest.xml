@@ -23,11 +23,8 @@
         </intent-filter>
         </activity>
         <activity android:name=".CoronaDetailsActivity"
-            android:configChanges="keyboardHidden|smallestScreenSize"
             android:parentActivityName=".MainActivity"/>
-        <activity android:name=".MainActivity"
-            android:configChanges="screenSize|keyboardHidden|smallestScreenSize">
-        </activity>
+        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>

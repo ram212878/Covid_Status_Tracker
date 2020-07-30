@@ -146,12 +146,13 @@ public class IndividualCountryData extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(btn.getText().toString().equalsIgnoreCase("see timeline"))
-                showTimeLine(code);
-                else {
+                if(btn.getText().toString().equalsIgnoreCase("see timeline")) {
+                    showTimeLine(code);
+                } else{
                     btn.setText(R.string.see_timeline);
                     recyclerView.setVisibility(View.GONE);
                 }
+
             }
         });
         return view;
@@ -187,7 +188,7 @@ public class IndividualCountryData extends Fragment {
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                Log.i("Response",response.toString());
+//                Log.i("Response",response.toString());
                 Gson json = new Gson();
                 timeLines.clear();
                 timeLines = json.fromJson(response.toString(), new TypeToken<List<TimeLine>>() {}.getType());
