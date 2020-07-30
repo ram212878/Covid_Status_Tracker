@@ -17,7 +17,7 @@
                 ads:adUnitId="ca-app-pub-1040530191555724/6890713034"
                 android:id="@+id/adView"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 app:adSize="BANNER"/>
 
